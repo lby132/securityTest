@@ -49,8 +49,8 @@ public class IndexController {
 	}
 	
 	//@PostAuthorize("hasRole('ROLE_MANAGER')")
-	//@PreAuthorize("hasRole('ROLE_MANAGER')")
-	@Secured("ROLE_MANAGER")
+	//@PreAuthorize("hasRole('ROLE_MANAGER')") // 메서드가 실행되기 직전에 호출되어서 ROLE_MANAGER가 있으면 /manager 이 페이지 접속 가능
+	@Secured("ROLE_MANAGER") // @PreAuthorize 와 같은 기능인데 요즘 @Secured를 쓴다고 함. 이건 어떤 특정한 메서드나 클래스에 권한을 넣고 싶을때 쓰고 아니면 SecurityConfig.class 처럼 글로벌로 쓴다.
 	@GetMapping("/manager")
 	public @ResponseBody String manager() {
 		return "매니저 페이지입니다.";
